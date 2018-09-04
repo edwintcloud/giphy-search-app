@@ -10,14 +10,15 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 app.get('/', function (req, res) {
-    if (typeof req.query.term === 'undefined' || req.query.term === null ) {
-        res.render('home', {gifs: ""})
-    } else {
+    if (req.query.term) {
         giphy.search(req.query.term, function (err, response) {
                 res.render('home', {gifs: response.data})
-        })
+        });
+    } else {
+        giphy.trending(function (err, response) {
+            res.render('home', {gifs: response.data});
+        });
     }
-
 });
 
 app.get('/hello-gif', function (req, res) {
