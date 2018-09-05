@@ -12,6 +12,7 @@
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "giphy-api": "^1.2.7",
+    "nodemon": "^1.18.4",
     "npm": "^6.4.0"
   }
 }
